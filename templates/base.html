@@ -36,13 +36,25 @@
         crossorigin="anonymous"></script>
     {% endblock %}
 
-    <title>Watch Meister {% block extra_title %}</title>
+    <title>Watch Meister {% block extra_title %}{% endblock %}</title>
 </head>
 
 <body>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <header class="container-fluid fixed-top"></header>
+
+    {% if messages %}
+    <div class="message-container"></div>
+    {% endif %}
+
+    {% block page-header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
 
 </body>
 
