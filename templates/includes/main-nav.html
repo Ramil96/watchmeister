@@ -19,10 +19,10 @@
                  Men's Watches
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">Luxry Watches</a>
-                <a href="" class="dropdown-item ">Sport Watches</a>
-                <a href="" class="dropdown-item ">Casual Watches</a>
-                <a href="" class="dropdown-item">All Mens's Watches</a>
+                <a href="{% url 'products' %}?category=luxury_watches" class="dropdown-item">Luxry Watches</a>
+                <a href="{% url 'products' %}?category=sports_watches" class="dropdown-item ">Sport Watches</a>
+                <a href="{% url 'products' %}?category=casual_watches" class="dropdown-item ">Casual Watches</a>
+                <a href="{% url 'products' %}?category=luxury_watches,sports_watches,casual_watches" class="dropdown-item">All Mens's Watches</a>
             </div>
         </li>
 
@@ -32,10 +32,10 @@
                 Collections
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">Limited Editions</a>
-                <a href="" class="dropdown-item">Classic Collection</a>
-                <a href="" class="dropdown-item">Vintage Collection</a>
-                <a href="" class="dropdown-item">All Collections</a>
+                <a href="{% url 'products' %}?category=limited_edition_watches" class="dropdown-item">Limited Editions</a>
+                <a href="{% url 'products' %}?category=classic_collection_watches" class="dropdown-item">Classic Collection</a>
+                <a href="{% url 'products' %}?category=vintage_collection_watches" class="dropdown-item">Vintage Collection</a>
+                <a href="{% url 'products' %}?category=limited_edition_watches,classic_collection_watches,vintage_collection_watches" class="dropdown-item">All Collections</a>
             </div>
         </li>
     </ul>
