@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from decimal import Decimal
 
 if os.path.isfile("env.py"):
     import env
@@ -182,6 +183,7 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET= os.getenv('STRIPE_WH_SECRET', '')
 DEFAULT_FROM_EMAIL = 'watchmeister@example.com'
+VAT_RATE = Decimal('0.20')
 
 
 # Default primary key field type
