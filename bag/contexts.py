@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
@@ -40,10 +40,11 @@ def bag_contents(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-    
-    vat_rate = 51
-    grand_total = delivery + total
-    
+
+    vat_rate = Decimal('0.20')
+    vat_amount = (total * vat_rate).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+    grand_total = delivery + total + vat_amount
+
     context = {
         'bag_items': bag_items,
         'total': total,
@@ -52,7 +53,7 @@ def bag_contents(request):
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
-        'vat_rate': vat_rate,
+        'vat_amount': vat_amount,
     }
 
     return context

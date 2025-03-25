@@ -29,6 +29,7 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     vat_amount = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    grand_total_with_vat = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
@@ -45,17 +46,20 @@ class Order(models.Model):
         """
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
 
-        vat_rate = Decimal(settings.VAT_RATE)
-        self.vat_amount = (self.order_total * vat_rate).quantize(Decimal(0.01))
+        vat_rate = settings.VAT_RATE
+        self.vat_amount = self.order_total * vat_rate / 100
 
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost
+            
+        self.grand_total = self.order_total + self.delivery_cost + self.vat_amount
         self.save()
         
-        self.grand_total_with_vat = (self.grand_total + self.vat_amount).quantize(Decimal(0.01))
+        #self.grand_total_with_vat = self.grand_total + self.vat_amount
+
+        super().save(update_fields=['order_total', 'grand_total', 'vat_amount', 'delivery_cost'])
     
     def save(self, *args, **kwargs):
         """
