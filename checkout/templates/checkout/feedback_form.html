@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <h2 class="mt-4">We Value Your Feedback</h2>
+    <p class="text-muted">Tell us about your shopping experience!</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <p style="color: white;">Did you enjoy your shopping experience?</p>
+        <button style="background-color: black; border-color: black;" type="submit" name="liked_experience" value="true" class="btn btn-success"> Yes</button>
+        <button style="background-color: black; border-color: black;" type="submit" name="liked_experience" value="false" class="btn btn-danger"> No</button>
+    </form>
+</div>
+{% endblock %}

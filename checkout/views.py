@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import OrderForm
+from .forms import OrderForm, FeedbackForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.forms import UserProfileForm
@@ -180,3 +180,18 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+def feedback_view(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('feedback_thanks')  # Redirect after submission
+    else:
+        form = FeedbackForm()
+
+    return render(request, 'checkout/feedback_form.html', {'form': form})
+
+
+def feedback_thanks(request):
+    return render(request, 'checkout/feedback_thanks.html')

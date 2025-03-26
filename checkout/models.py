@@ -71,6 +71,19 @@ class Order(models.Model):
     def __str__(self):
         return self.order_number
 
+class Feedback(models.Model):
+    """
+    Model for collecting user feedback on shopping experience.
+    """
+    name = models.CharField(max_length=100, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    message = models.TextField(blank=True)
+    liked_experience = models.BooleanField(null=True)  # Thumbs up/down
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Feedback from {self.name or 'Anonymous'} - {'👍' if self.liked_experience else '👎'}"
 
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')

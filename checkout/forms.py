@@ -1,5 +1,5 @@
 from django import forms
-from .models import Order
+from .models import Order, Feedback
 
 
 class OrderForm(forms.ModelForm):
@@ -37,3 +37,11 @@ class OrderForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['name', 'email', 'message', 'liked_experience']
+        widgets = {
+            'liked_experience': forms.HiddenInput(),
+        }
