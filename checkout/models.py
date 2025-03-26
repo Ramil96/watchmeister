@@ -56,8 +56,6 @@ class Order(models.Model):
             
         self.grand_total = self.order_total + self.delivery_cost + self.vat_amount
         self.save()
-        
-        #self.grand_total_with_vat = self.grand_total + self.vat_amount
 
         super().save(update_fields=['order_total', 'grand_total', 'vat_amount', 'delivery_cost'])
     
