@@ -169,8 +169,57 @@ The Entity-Relationship Diagram (ERD) for this project provides a clear represen
 ## Testing
 The apps functionalty was also tested by friends and family. Their feedback was invaluable in identifying any issues and making necessary improvements.
 
+## Testing
+> Testing on this project was done manually by me by myself and family members to determine the functionality of the site with both usability and responsiveness to make sure it is easily usable by a new user.
+
+#### Testing links
+
+| Test                                                         | Outcome |
+|--------------------------------------------------------------|---------|
+| All links on Navigation lead to their correct pages.         | Pass    |
+| Ability to navigate to the to the shopping bag.              | Pass    |
+| Navigating back to the home page from the bag page.          | Pass    |
+
+#### Testing responsiveness
+
+| Test                                                         | Outcome |
+|--------------------------------------------------------------|---------|
+| Home page, watch navigations, displays correctly on screens larger than 950px  | Pass    |
+| Home page, watch navigations, displays correctly on screens smaller than 950px | Pass    |
+
+### User testing
+#### User testing challenge
+> 5 users are given some basic tasks prior to visiting web page and the results totaled to give result (20% per successful user result.)
+
+| Test                                                         | Outcome |
+|--------------------------------------------------------------|---------|
+| Upon arrival to website please navigate to where you would expect to find the catalogue.  | 100%    |
+| Please add a watch of your choice to the bag.                                             | 100%    |
+| Please fill in the register form.                                                         | 100%    |
+| Please purchase an item.                                                                  | 100%    |
+| Please add a review after purchasing an item.                                             | 100%    |
+
+#### User responsive testing
+> 5 users were asked to view the website on their mobile devices and/or tablets to provide any feedback on errors or page overlapping issues.
+
+| Test                                                         | Result |
+|--------------------------------------------------------------|---------|
+| Issues Reported                                              | None    |
+
+## Further testing
+
+### No errors
+
+> [froms linter](media/fromslinter.png)
+
+> [jshint](media/jshint.png)
+
+> [pythonlinter](media/pythonlinter.png)
+
+> [w3c](media/w3cvalidator.png)
+
 ## Deployment
-- **App Deployment:** The Henna Store app was deployed on Heroku, a cloud platform that facilitates easy and scalable application hosting. For more information about Heroku, click [here](https://www.heroku.com/).
+- **App Deployment:** The Watchmeister app was deployed on Heroku, a cloud platform that facilitates easy and scalable application hosting. For more information about Heroku, click [here](https://www.heroku.com/).
 
 - **Database Deployment:** The PostgreSQL database is used for data management, provided by Code Institute for students. More information about PostgreSQL can be found [here](https://www.postgresql.org/).
 
